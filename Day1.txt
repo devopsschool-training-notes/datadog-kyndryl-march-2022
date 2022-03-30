@@ -1,0 +1,175 @@
+Rajesh Kumar
+------------------
+www.RajeshKumar.xyz
+
+Datadog APM
+-------------
+	What is Monitoring Vs Obs
+	What and Why APM
+	Datadog Infra
+	Datadog APM
+		Datadog Monitor with APM
+		Datadog Dashboard with APM
+
+Start Time - 9:30 PM
+End Time - 5:30 PM 
+==============================
+Lunch - 1:00 PM - 2:00 PM
+2 Short Break - 15 mins only
+	11 AM for 15 mins
+	3:30 PM for 15 mins.
+===============================
+Demo - AWS
+Lab  - AWS
+==================================
+Demo & Discussion - 70%
+Lab - 30%
+==================================
+DataDog
+		Metrices - Infra
+		Log
+		APM ==================== TOPIC OF THE DAY
+		Syn
+		Browser AKA RUM
+		- CNCF - Navtive Mo
+				- Docker
+				- Kuber
+				- Prom
+DataDog is not a monitoring. DataDog is framework for making your infra Obserabable.
+============================================================================
+Demo
+===================
+Step 1 - Register at https://www.datadoghq.com/ using "Get Started Free"
+
+
+3.111.147.245
+User Name - centos
+Key - PEM or PPK
+
+Step 2 - 
+
+Aspect - 1		- Install Datadog infra Agent
+
+DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=XXXX DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
+
+
+Adding your API key to the Datadog Agent configuration: /etc/datadog-agent/datadog.yaml
+Setting SITE in the Datadog Agent configuration: /etc/datadog-agent/datadog.yaml
+
+$ systemctl stop datadog-agent
+$ systemctl start datadog-agent
+$ ps -eaf | grep datadog
+$ ls /var/log/datadog
+
+Aspect - 2		- Install Datadog APM Agent
+==================================================
+Step # 1 - Get a Linux VM		- DONE
+
+Step # 2 - Install JAVA		- DONE
+- https://www.devopsschool.com/blog/complete-guide-of-java-installation-in-linux/
+
+Step # 3 - Install Tomcat		- DONE
+- https://www.devopsschool.com/blog/tomcat-install-and-configuration-tutorial-and-guide/
+
+Verify - http://3.111.147.245:8080/
+
+
+Step # 4 - Install Apps		- DONE
+
+$ cd /opt/apache-tomcat-9.0.60/webapps
+$ wget https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war --no-check-certificate
+$ chmod 755 sample.war	
+
+Verify - http://3.111.147.245:8080/sample
+
+Step # 5 - Install/Embed/Config Datadog APM Agent in JVM using Tomcat - DONE
+- https://app.datadoghq.com/apm/intro
+- https://docs.datadoghq.com/tracing/setup_overview/setup/
+
+			
+		Datadog APM Agent
+		- JAVA
+		- PHP
+		- RYBY
+		- pYTHON
+
+NOT FOR THE PRODUCTION
+---------------------------
+java -javaagent:/path/to/dd-java-agent.jar -Ddd.logs.injection=true -Ddd.service=devopsschool -Ddd.env=production -jar path/to/your/app.jar
+
+For the production
+------------------------------
+TOMCAT - YES
+JBOSS
+WEBLOGIC
+
+- cd /opt/apache-tomcat-9.0.60/bin
+- vi setenv.sh
+	CATALINA_OPTS="$CATALINA_OPTS -javaagent:/opt/ddagent/dd-java-agent.jar -Ddd.logs.injection=true -Ddd.service=devopsschool -Ddd.env=production"
+- chmod 755 setenv.sh
+- ./shutdown.sh
+- ./startup.sh
+- ps -eaf | grep dd-java-agent
+
+
+
+
+Step # 6 - Creating a Traffic on APP using JMETER 
+	so you would all Request's response captured by Datadog APM agent and stored at Datadog cloud.
+
+- Windows Laptop - Install JDK 11 and Set JAVA_HOME
+- Download Jmeter
+- Start Jmeter
+- Configure Jemter with http://3.111.147.245:8080/sample/ to create a fake traffic.
+- https://www.devopsschool.com/blog/how-to-install-and-configure-jemeter/
+- https://www.guru99.com/jmeter-performance-testing.html
+
+
+Step # 7 - Login to Datadog website and 
+			- Get familiar with All APM metrices
+			- Get familiar with All APM Graphs
+			- Set Alerts for few APM metrices
+			- Create a Dashboard with APM metrices
+
+ADDONS
+- Install Datadog infra Agent
+- Create a Alerts for Datadog infra
+- Setup a Syntehic Monitoring
+- Create a Alerts for Synthehic Monitoring
+- Create a Dashboard with Datadog infra Metrcies & Synthehic Metrcies 
+
+
+
+Ratnesh Kumar Gupta	13.234.110.4
+Abhishek Garg		3.110.102.152
+Sanjeev Kumar		13.232.246.61
+Rishabh Goswami		3.111.245.68
+Yogi verma			43.204.19.15
+Mohsina Mumtaz		43.204.28.188
+Ganesh Kumar			35.154.87.20
+
+centos
+rajesh-mumbai.ppk - PUTTY
+rajesh-mumbai.pem - SSH
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
